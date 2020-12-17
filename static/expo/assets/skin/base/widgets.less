@@ -1,0 +1,98 @@
+/* ==============================================
+   Widgets
+     A. Timeline
+     B. More Coming Soon
+=================================================
+   A. Timeline
+================================================= */
+
+// Timeline list widget
+ol.timeline-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+  color: #AAA;
+
+  // timeline entries
+  li.timeline-item {
+    position: relative;
+    padding: 15px 120px 15px 50px;
+
+    &:hover .timeline-icon,
+    &:focus .timeline-icon {
+      opacity: 1;
+    }
+
+    // item spine
+    &:after {
+      content: "";
+      position: absolute;
+      display: block;
+      left: 23px;
+      top: 0;
+      height: 100%;
+      width: 3px;
+      background: #E8E8E8;
+    }
+
+    // item dividers
+    + .timeline-item {
+      border-top: 1px solid #E8E8E8;
+    }
+
+    // timeline desc
+    .timeline-desc {
+      letter-spacing: 0.2px;
+
+      // desc author
+      b, strong {
+        color: #333;
+        font-weight: 600;
+      }
+      // desc link
+      a {
+        padding: 0 2px;
+        color: @brand-info;
+      }
+    }
+
+    // timeline icon
+    .timeline-icon {
+      opacity: 0.85;
+      z-index: 2;
+      position: absolute;
+      left: 10px;
+      top: 10px;
+      background: #BBB;
+      width: 30px;
+      height: 30px;
+      line-height: 26px;
+      color: #FFF;
+      text-align: center;
+      border-radius: 26px;
+      border: 2px solid #FFF; 
+    }
+
+    // timeline date
+    .timeline-date {
+      position: absolute;
+      right: 15px;
+      top: 15px;
+    }
+
+  }
+}
+
+
+// Timeline list widget - When
+// placed in a content tray
+.tray-left ol.timeline-list,
+.tray-right ol.timeline-list {
+
+  // timeline entries
+  li.timeline-item {
+    position: relative;
+    padding: 15px 80px 15px 50px;
+  }
+
+}

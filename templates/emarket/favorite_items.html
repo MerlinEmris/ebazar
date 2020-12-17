@@ -1,0 +1,76 @@
+{% extends 'emarket/base/base2.html' %}
+{% load widget_tweaks %}
+{% load staticfiles %}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'vendor/flickity/flickity.min.css' %}">
+{% endblock %}
+{% block body %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="container my-bg-lightcolor text-white my-padding-s1 my-box-shadow">
+
+    <div class="row">
+        <div class="col-lg-3">
+        <!--------------------------------User profile ------------------------->
+                        <a class="row" href=""><img src="{{ MEDIA_URL }}{{ user.profile.img }}" class="img-thumbnail" width="150px">
+{#                        <h3><a href="{% url 'satyjy' item.user.username %}">{{ item.user.username|upper }}</a></h3>#}
+                        <h1>{{ user.username|upper }}</h1></a>
+        </div>
+
+        <div class="col-lg-9">
+        <!------------------------------favorite item list ---------------------------->
+        <div class="row">
+        {% if fav_items %}
+            {% for item in fav_items %}
+                    <div class="col-lg-4 col-md-6 mb-4 text-dark">
+                        <div class="card h-100">
+                                <div id="owl-list-flickity" class="main-gallery flickity-viewport">
+                                    {% for pic in pics %}
+                                        {% if pic.item == item.item %}
+                                            <div class="gallery-cell">
+                                                <img class="card-img-top" src="{{ MEDIA_URL }}{{ pic.img }}" alt="">
+                                            </div>
+                                        {% endif %}
+                                    {% endfor %}
+                                </div>
+                            <div class="card-body">
+                                <h4 class="card-title">
+                                    <a href="{% url 'show_item' item.item.id %}">{{ item.item.name }}</a>
+                                </h4>
+                                <h5 class="text-danger">{{ item.item.price }} <strong class="text-dark">TMT</strong></h5>
+                            <p class="card-text">{{ item.item.description|truncatechars:60 }}</p>
+                            </div>
+                            <div class="card-footer">
+                                <small class="text-muted">Tel:{{ item.item.user_phone }}</small>
+                            </div>
+                        </div>
+                    </div>
+            {% endfor %}
+        {% endif %}
+        </div>
+        <!--============================end listitem================================-->
+        </div>
+
+    </div>
+    <!-- flix -->
+    <!-- end flix -->
+
+    </div>
+
+{% endblock %}
+
+{% block js %}
+<script src="{% static 'vendor/flickity/flickity.pkgd.min.js' %}"></script>
+{% endblock %}

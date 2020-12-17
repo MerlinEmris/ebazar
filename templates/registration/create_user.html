@@ -1,0 +1,34 @@
+{% extends 'emarket/base/base2.html' %}
+{% load widget_tweaks %}
+{% load staticfiles %}
+
+{% block head %}{{ block.super }}{% endblock %}
+
+{% block title %}Hasaba alyn{% endblock %}
+
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2 col-sm-1 col-xs-1">
+
+            </div>
+            <div class="col-md-8 col-sm-10 col-xs-10 my-bg-lightcolor p-4 rounded">
+                <h2>Hasaba alyn</h2>
+                <form method="post" novalidate>
+                    {% csrf_token %}
+
+                    {% include 'emarket/base/form-base.html' with form=form %}
+
+                    <button type="submit" class="btn btn-primary">Hasaba alyn</button>
+
+                </form>
+            </div>
+            <div class="col-md-2 col-sm-1 col-xs-1">
+
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+

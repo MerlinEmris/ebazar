@@ -1,0 +1,126 @@
+{% extends 'emarket/base/base2.html' %}
+{% load widget_tweaks %}
+{% load staticfiles %}
+{% load i18n %}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'vendor/flickity/flickity.min.css' %}">
+{% endblock %}
+{% block body %}
+
+
+    <div class="container my-bg-lightcolor text-white my-padding-s1 my-box-shadow rounded">
+
+    <div class="row">
+    <!-- invisible in small devices -->
+        <div class="col-lg-3 hidden-sm hidden-xs hidden-md d-none d-lg-block">
+        <!--------------------------------categories ------------------------->
+            <ul class="list-group">
+                {% if cats %}
+                {% for cat in cats %}
+                    <li class="list-group-item">
+                        <a href="{% url 'show_category' cat.name %}">{{ cat.name }}</a>
+                    </li>
+                {% endfor %}
+                {% endif %}
+            </ul>
+        </div>
+
+        <div class="col-lg-9">
+        <!-------------------------------img carusel---------------------------------->
+         <div id="myCarousel" class="carousel slide m-3 my-box-shadow rounded" data-ride="carousel">
+          <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+          </ol>
+          <div class="carousel-inner" role="listbox">
+            <div class="carousel-item active">
+              <img class="first-slide" src="{% static 'img/1.jpg' %}" alt="First slide" width="100%">
+              <div class="container">
+                <div class="carousel-caption d-none d-md-block text-left">
+                  <h1>Iň gowy goşlar</h1>
+                  <p>Amatly bahadan islän goşlaryňyz. Gerek dälmi? Onda sat!</p>
+                  {% if user.is_authenticated %}
+                  <p><a class="btn btn-lg btn-primary" href="{% url 'profile' %}" role="button">Ulanyjyny sazla</a></p>
+                  {% else %}
+                  <p><a class="btn btn-lg btn-primary" href="{% url 'login' %}" role="button">Şu wagtyň özünde hasaba alyn!</a></p>
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <img class="second-slide img-fluid" src="{% static 'img/2.jpg' %}" alt="Second slide" width="100%">
+              <div class="container">
+                <div class="carousel-caption d-none d-md-block">
+                  <h1>Öz goşyňy goş!</h1>
+                  <p>Gerek dälmi, saklama, gerege amatly nyrhdan sat!</p>
+                  <p><a class="btn btn-lg btn-primary" href="{% url 'create_item' %}" role="button">Goş goş</a></p>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <img class="third-slide" src="{% static 'img/3.jpg' %}" alt="Third slide" width="100%">
+              <div class="container">
+                <div class="carousel-caption d-none d-md-block text-right">
+                  <h1>Üýtgeşik birzatlar gerekmi?!</h1>
+                  <p>Özüňe geregini gözle we al!</p>
+                  <p><a class="btn btn-lg btn-primary" href="{% url 'search' %}" role="button">{% trans 'Gözle' %}</a></p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Öňki</span>
+          </a>
+          <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Indiki</span>
+          </a>
+        </div>
+        <!--=============================end carusel================================-->
+        <!------------------------------selling item list ---------------------------->
+        <div class="row">
+        {% if items %}
+            {% for item in items %}
+                    <div class="col-lg-4 col-md-6 mb-4 text-dark">
+                        <div class="card h-100">
+                                <div id="owl-list-flickity" class="main-gallery flickity-viewport">
+                                    {% for pic in pics %}
+                                        {% if pic.item == item %}
+                                            <div class="gallery-cell">
+                                                <img class="card-img-top" src="{{ MEDIA_URL }}{{ pic.img }}" alt="">
+                                            </div>
+                                        {% endif %}
+                                    {% endfor %}
+                                </div>
+                            <div class="card-body">
+                                <h4 class="card-title">
+                                    <a href="{% url 'show_item' item.id %}">{{ item.name }}</a>
+                                </h4>
+                                <h5 class="text-danger">{{ item.price }} <strong class="text-dark">TMT</strong></h5>
+                            <p class="card-text">{{ item.description|truncatechars:60 }}</p>
+                            </div>
+                            <div class="card-footer">
+                                <small class="text-muted">Tel:{{ item.user_phone }}</small>
+                            </div>
+                        </div>
+                    </div>
+            {% endfor %}
+        {% endif %}
+        </div>
+        <!--============================end listitem================================-->
+        </div>
+
+    </div>
+    <!-- flix -->
+    <!-- end flix -->
+    </div>
+
+
+
+{% endblock %}
+
+{% block js %}
+<script src="{% static 'vendor/flickity/flickity.pkgd.min.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,109 @@
+/*==------------------------main----------------------------==*/
+body {
+    color: white;
+}
+body {
+  min-height: 100%;
+}
+@media (min-width: 250px) {
+    body {
+        padding-top: 50px;
+    }
+}
+.card {
+    /*height: 100%;*/
+}
+.pagination {
+    margin-bottom: 15px;
+}
+form{
+    padding-top: 3%;
+    padding-bottom: 3%;
+}
+
+/*==------------------------ owl css----------------------------==*/
+/*#owl-lazy .item{*/
+    /*margin: 3px;*/
+    /*background: transparent;*/
+/*}*/
+/*#owl-lazy .item img{*/
+    /*display: block;*/
+    /*width: 100%;*/
+    /*height: auto;*/
+    /*background: transparent;*/
+/*}*/
+
+/*.padforowl{*/
+    /*padding-left: 3%;*/
+    /*padding-right: 3%;*/
+/*}*/
+
+/*==-------------------------jquary lazy plugin----------------==> */
+/*img.lazy {*/
+    /*width: 700px;*/
+    /*height: 467px;*/
+    /*display: block;*/
+
+    /*!* optional way, set loading as background *!*/
+    /*background-image: url('../img/loading.gif');*/
+    /*background-repeat: no-repeat;*/
+    /*background-position: 50% 50%;*/
+/*}*/
+
+/*==------------------------flickity-------------------------==*/
+/*.gallery-cell {*/
+    /*width: 100%;*/
+/*}*/
+/*.flickity-viewport {*/
+    /*transition: height 0.2s;*/
+/*}*/
+/*@media screen and ( min-width: 700px ) {*/
+    /*!* half-width cells for larger devices *!*/
+    /*.gallery-cell { width: 25%; }*/
+/*}*/
+
+/*----------------------parallax--------------------------------*/
+.parallax-window {
+    /*padding-top: 1%;*/
+    padding-bottom: 1%;
+    min-height: 250px;
+    background: transparent;
+}
+/*-------------------------my--------------------------------*/
+.my-bg-transparent{
+    background: transparent;
+}
+.my-bg-lightcolor{
+    background: rgba(50,10,25,0.55);
+    color: #f8f8f8;
+}
+.my-box-shadow{
+    /*box-shadow: 0px 0px 55px 8px rgba(100%,100%,100%,0.5);*/
+    box-shadow: 0px 5px 13px 15px rgba(0,0,0,0.8);
+}
+
+.my-padding-s1{
+    padding-bottom: 10px;
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.card {
+    box-shadow: 0px 3px 3px 6px rgba(255,255,255,.1);
+}
+/*--------------------------flickity-----------------------*/
+.gallery-cell {
+    width: 100%;
+}
+.flickity-viewport {
+    transition: height 0.4s;
+}
+@media screen and ( min-width: 700px ) {
+    /* half-width cells for larger devices */
+    .gallery-cell { width: 100%; }
+}
+@media screen and ( min-width: 700px ) {
+    /* half-width cells for larger devices */
+    .carusel-cell { width: 100%; }
+}

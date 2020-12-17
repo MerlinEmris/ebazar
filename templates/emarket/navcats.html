@@ -1,0 +1,3 @@
+{% for navcat in navcats %}
+    <a href="{% url 'show_category' navcat.id %}" class="dropdown-item text-center">{{ navcat.name }}</a>
+{% endfor %}

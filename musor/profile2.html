@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+{% load widget_tweaks %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Profile</title>
+</head>
+<body>
+<form method="post" novalidate>
+    {% csrf_token %}
+    <!--form
+        {% for field in form %}
+      <p>
+        {{ field.label_tag }}<br>
+        {{ field }}
+        {% if field.help_text %}
+          <small style="color: grey">{{ field.help_text }}</small>
+        {% endif %}
+        {% for error in field.errors %}
+          <p style="color: red">{{ error }}</p>
+        {% endfor %}
+      </p>
+    {% endfor %} endform-->
+<!-- not flexible detail
+{{ form.non_field_errors }}
+
+  {{ form.source.errors }}
+  {{ form.source }}
+
+  <table border="1">
+
+      <tr>
+        <th>{{ form.biography.label_tag }}</th>
+        <td>
+          {{ form.biography.errors }}
+          {{ form.biography }}
+        </td>
+      </tr>
+
+      <tr>
+        <th>{{ form.location.label_tag }}</th>
+        <td>
+          {{ form.location.errors }}
+          {{ form.location }}
+        </td>
+      </tr>
+
+      <tr>
+        <th>{{ form.birth_date.label_tag }}</th>
+        <td>
+          {{ form.birth_date.errors }}
+          {{ form.birth_date }}
+          <br />
+          {{ form.birth_date.help_text }}
+        </td>
+      </tr>
+
+  </table>
+  -->
+<!-- deep detail form
+<input type="{{ widget.type }}"
+       name="{{ widget.name }}"
+       {% if widget.value != None %} value="{ { widget.value|stringformat:'s' }}"{% endif %}
+       {% include "django/forms/widgets/attrs.html" %} />
+       -->
+                            <!-- //<*>2<*>\\ -->
+
+<!--  flexible for all kind -->
+{% if form.non_field_errors %}
+    <ul>
+      {% for error in form.non_field_errors %}
+        <li>{{ error }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+
+  {% for hidden_field in form.hidden_fields %}
+    {% if hidden_field.errors %}
+      <ul>
+        {% for error in hidden_field.errors %}
+          <li>(Hidden field {{ hidden_field.name }}) {{ error }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+    {{ hidden_field }}
+  {% endfor %}
+
+  <table border="1">
+    {% for field in form.visible_fields %}
+      <tr>
+        <th>{{ field.label_tag }}</th>
+        <td>
+          {% if field.errors %}
+            <ul>
+              {% for error in field.errors %}
+                <li>{{ error }}</li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+          {{ field }}
+          {% if field.help_text %}
+            <br />{{ field.help_text }}
+          {% endif %}
+        </td>
+      </tr>
+    {% endfor %}
+  </table>
+
+
+    <button type="submit">save changes</button>
+  </form>
+</body>
+</html>
+
+
+<form method="post">
+    {% csrf_token %}
+    {% for field in form %}
+      <p>
+        {{ field.label_tag }}<br>
+        {{ field }}
+        {% if field.help_text %}
+          <small style="color: grey">{{ field.help_text }}</small>
+        {% endif %}
+        {% for error in field.errors %}
+          <p style="color: red">{{ error }}</p>
+        {% endfor %}
+      </p>
+    {% endfor %}
+    <button type="submit">Sign up</button>
+  </form>

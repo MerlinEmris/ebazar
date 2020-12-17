@@ -1,0 +1,82 @@
+{% extends 'emarket/base/base2.html' %}
+{% load widget_tweaks %}
+{% load staticfiles %}
+  {% block head %}
+        <link rel="stylesheet" href="{% static 'vendor/flickity/flickity.min.css' %}">
+    {% endblock %}
+  {% block title %}Goş {{ item.name }}{% endblock %}
+
+{% block body %}
+
+
+    <div class="container my-box-shadow my-bg-lightcolor text-dark">
+
+      <div class="row">
+
+        <div class="col-lg-3">
+          <h1 class="my-4 text-white">{{item.name}}</h1>
+            <div>
+                <div class="list-group">
+                {% if user.id == item.user.id %}
+                    <a href="{% url 'add_item_img' item.id %}" class="list-group-item text-center">Surat goş</a>
+                    <a href="{% url 'delete_item' item.id %}" class="list-group-item text-center">Goşy poz</a>
+                    <a href="{% url 'edit_item' item.id %}" class="list-group-item text-center">Goşy üýtget</a>
+                    {% if exist == 0 %}
+                        <a href="{#% url 'add_to_fav' item.id %#}" class="list-group-item text-center">Söýgililere goş</a>
+                    {% endif %}
+                {% endif %}
+
+                </div>
+            </div>
+            <div>
+                <!-- extra item al -->
+            </div>
+        </div>
+        <!-- /.col-lg-3 -->
+
+        <div class="col-lg-9">
+
+          <div class="card mt-4">
+<!------------------------------------ img flickity------------------------------------->
+            <div id="owl-list-flickity" class="main-gallery flickity-viewport">
+                                    {% for pic in pics %}
+                                        {% if pic.item == item %}
+                                            <div class="gallery-cell">
+                                                <img class="" width="100%" src="{{ MEDIA_URL }}{{ pic.img }}" alt="">
+                                            </div>
+                                        {% endif %}
+                                    {% endfor %}
+            </div>
+<!--==================================end img flickity================================-->
+            <div class="card-body">
+                <div class="container">
+                        <a class="" href="{% url 'user' item.user.id %}">
+                            <div class="row">
+                                <img src="{{ MEDIA_URL }}{{ item.user.profile.img }}" class="img" width="80px" height="90px">
+                                <h4 class="">{{ item.user.username|upper }}</h4>
+                            </div>
+                        </a>
+                </div>
+
+
+              <h3 class="card-title">{{ item.name }}</h3>
+              <h4 class="text-danger">{{ item.price }}TMT</h4>
+              <p class="card-text">{{ item.description }}</p>
+{#                <h2><a href="{% url 'user' item.user_id %}">{{ item.user.username }}</a></h2>#}
+              <span class="text-primary">Tel:{{ item.user_phone }}</span>
+            </div>
+          </div>
+          <!-- /.card -->
+
+        </div>
+        <!-- /.col-lg-9 -->
+
+      </div>
+        <br>
+    </div>
+
+
+{% endblock %}
+{% block js %}
+        <script src="{% static 'vendor/flickity/flickity.pkgd.min.js' %}"></script>
+{% endblock %}

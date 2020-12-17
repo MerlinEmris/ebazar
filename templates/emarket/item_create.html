@@ -1,0 +1,21 @@
+{% extends 'emarket/base/base2.html' %}
+{% load widget_tweaks %}
+{% load staticfiles %}
+  {% block head %}
+
+    {% endblock %}
+  {% block title %}Goş goş{% endblock %}
+
+{% block body %}
+    <div class="container my-bg-lightcolor my-box-shadow my-margin-top">
+
+<form method="post" enctype="multipart/form-data" novalidate>
+  {% csrf_token %}
+    
+  {% include 'emarket/base/form-base.html' with form=form %}
+
+  <button type="submit" class="btn btn-primary">Goş</button>
+
+</form>
+    </div>
+{% endblock %}

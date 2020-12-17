@@ -1,0 +1,1 @@
+url(r'^item-image-upload/$', views.BasicUploadView.as_view(), name='basic_upload'),

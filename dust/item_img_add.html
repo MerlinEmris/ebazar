@@ -1,0 +1,57 @@
+{% extends 'emarket/base/base2.html' %}
+{% load widget_tweaks %}
+{% load staticfiles %}
+{% block body %}
+
+<div class="modal fade" id="modal-progress" data-backdrop="static" data-keyboard="false">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Uploading...</h4>
+      </div>
+      <div class="modal-body">
+        <div class="progress">
+          <div class="progress-bar" role="progressbar" style="width: 0%;">0%</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{# 1. BUTTON TO TRIGGER THE ACTION #}
+<button type="button" class="btn btn-primary js-upload-photos">
+  <span class="glyphicon glyphicon-cloud-upload"></span> Upload photos
+</button>
+
+{# 2. FILE INPUT TO BE USED BY THE PLUG-IN #}
+<input id="fileupload" type="file" name="file" multiple
+       style="display: none;"
+       data-url="{% url 'photos:basic_upload' %}"
+       data-form-data='{"csrfmiddlewaretoken": "{{ csrf_token }}"}'>
+
+{# 3. TABLE TO DISPLAY THE UPLOADED PHOTOS #}
+<table id="gallery" class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Photo</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for photo in photos %}
+      <tr>
+        <td><a href="{{ photo.file.url }}">{{ photo.file.name }}</a></td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}
+
+{% block js %}
+  {# JQUERY FILE UPLOAD SCRIPTS #}
+  <script src="{% static 'vendor/jQuery-File-Upload-9.14.1/jQuery-File-Upload-9.14.1/js/vendor/jquery.ui.widget.js' %}"></script>
+  <script src="{% static 'vendor/jQuery-File-Upload-9.14.1/jQuery-File-Upload-9.14.1/js/jquery.iframe-transport.js' %}"></script>
+  <script src="{% static 'vendor/jQuery-File-Upload-9.14.1/jQuery-File-Upload-9.14.1/js/jquery.fileupload.js' %}"></script>
+
+  {# PHOTOS PAGE SCRIPTS #}
+  <script src="{% static 'js/img_uploader.js' %}"></script>
+{% endblock %}

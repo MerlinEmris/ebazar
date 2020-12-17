@@ -1,0 +1,60 @@
+{% extends 'emarket/base/base2.html' %}
+{% load staticfiles %}
+{% block head %}
+        <link rel="stylesheet" href="{% static 'vendor/flickity/flickity.min.css' %}">
+{% endblock %}
+{% block title %}{{ user.username|upper }} ulanyjy{% endblock %}
+{% block body %}
+    <div class="container">
+        <div class="row">
+            {% for item in items %}
+        <div class="col-lg-4 col-md-6 mb-4 text-dark">
+            <div class="card h-100">
+                <div id="owl-list-flickity" class="main-gallery flickity-viewport">
+                    {% for pic in pics %}
+                        {% if pic.item == item %}
+                            <div class="gallery-cell">
+                                <img class="card-img-top" src="{{ MEDIA_URL }}{{ pic.img }}" alt="">
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+                <div class="card-body">
+                    <h4 class="card-title">
+                        <a href="{% url 'show_item' item.id %}">{{ item.name }}</a>
+                    </h4>
+                    <h5 class="text-danger">{{ item.price }} <strong class="text-dark">TMT</strong></h5>
+                    <p class="card-text">{{ item.description|truncatechars:60 }}</p>
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted">Tel:{{ item.user_phone }}</small>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+        </div>
+    {% if items %}
+            <div class="pagination">
+                <span class="step-links">
+                    {% if items.has_previous %}
+                        <a href="?page={{ items.previous_page_number }}">öňki</a>
+                    {% endif %}
+
+                    <span class="current">
+                        Sahypa {{ items.number }} - {{ items.paginator.num_pages }} içinden.
+                    </span>
+
+                    {% if items.has_next %}
+                        <a href="?page={{ items.next_page_number }}">indiki</a>
+                    {% endif %}
+                </span>
+            </div>
+    {% endif %}
+    </div>
+
+
+{% endblock %}
+
+{% block js %}
+        <script src="{% static 'vendor/flickity/flickity.pkgd.min.js' %}"></script>
+{% endblock %}

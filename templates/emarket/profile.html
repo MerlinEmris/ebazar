@@ -1,0 +1,27 @@
+{% extends 'emarket/base/base2.html' %}
+{% load widget_tweaks %}
+{% load staticfiles %}
+  {% block head %}
+
+    {% endblock %}
+  {% block title %}{{ user.username|upper }} ulanyjy{% endblock %}
+
+{% block body %}
+    <div class="container my-bg-lightcolor my-box-shadow my-margin-top">
+
+
+<h1>{{ user.username }}</h1>
+        <img src="{{ MEDIA_URL }}{{ user.profile.img }}" class="img-thumbnail" alt="{{user.username}}" width="300" height="300">
+        {% if exist == 1 %}
+        <a class="btn btn-danger" href="{% url 'profile_change_photo' user.id %}">Suraty çalşyr</a>
+        {% endif %}
+<form method="post" enctype="multipart/form-data" novalidate>
+  {% csrf_token %}
+    
+  {% include 'emarket/base/form-base.html' with form=form %}
+
+  <button type="submit" class="btn btn-primary">Ýatda sakla</button>
+
+</form>
+    </div>
+{% endblock %}
