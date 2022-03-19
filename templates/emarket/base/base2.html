@@ -63,10 +63,10 @@
                   <li class="nav-item dropdown text-center">
                       <a class="nav-link dropdown-toggle" id="dropdown01" style="color: #fff !important;" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="{{ MEDIA_URL }}{{ user.profile.img }}" class="img-fluid img-active" width="30px">{{ user.username|upper }}</a>
                       <div class="dropdown-menu" aria-labelledby="dropdown01">
-                          <a href="{% url 'profile' %}" class="dropdown-item text-center" style="color: #fff !important;">Ulanyjy</a>
+                          <a href="{% url 'profile' %}" class="dropdown-item text-center" >Ulanyjy</a>
 {#                          <a href="{% url 'favorite_items' user.id%}" class="dropdown-item text-center">Favorites</a>#}
-                          <a href="{% url 'user' user.id %}" class="dropdown-item text-center" style="color: #fff !important;">Meniň goşlarym</a>
-                          <a href="{% url 'logout' %}" class="dropdown-item text-center" style="color: #fff !important;">Çyk</a>
+                          <a href="{% url 'user' user.id %}" class="dropdown-item text-center" >Meniň goşlarym</a>
+                          <a href="{% url 'logout' %}" class="dropdown-item text-center" >Çyk</a>
                       </div>
                   </li>
               {% else %}
