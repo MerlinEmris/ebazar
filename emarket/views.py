@@ -220,7 +220,7 @@ def favorite_items(request, user_id):
 
 
 def show_category(request, cat_id):
-    cat = Category.objects.filter(name=cat_id)
+    cat = Category.objects.get(id=cat_id)
     items = Item.objects.filter(category=cat)
     pics = Item_Image.objects.all()
     if items:
