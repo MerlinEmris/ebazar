@@ -18,7 +18,7 @@
                 {% if cats %}
                 {% for cat in cats %}
                     <li class="list-group-item">
-                        <a href="{% url 'show_category' cat.name %}">{{ cat.id }}</a>
+                        <a href="{% url 'show_category' cat.id %}">{{ cat.name }}</a>
                     </li>
                 {% endfor %}
                 {% endif %}
