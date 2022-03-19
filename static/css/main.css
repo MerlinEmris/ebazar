@@ -10,6 +10,12 @@ body {
         padding-top: 50px;
     }
 }
+
+.main-container{
+    height: 100vh;
+    background: rgba(0, 0, 0, 0) linear-gradient(90deg, rgb(85, 98, 112) 10%, rgb(255, 107, 107) 90%) repeat scroll 0% 0%;
+}
+
 .card {
     /*height: 100%;*/
 }
