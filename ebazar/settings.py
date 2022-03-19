@@ -174,6 +174,7 @@ LOGIN_URL = '/login/'
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 STATICFILES_DIRS = [STATIC_DIR]
 STATIC_URL = '/static/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'static')
 # STATIC_ROOT = 'C:\xampp\htdocs\eBazar_static'
 
 MEDIA_URL = '/media/'
