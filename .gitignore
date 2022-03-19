@@ -1,3 +1,4 @@
 /env
 /.github
 __pycache__
+/.vscode
