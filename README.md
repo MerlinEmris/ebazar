@@ -35,7 +35,7 @@ Apply migrations
 ```bash
 python manage.py migrate
 ```
-
+---
 
 ### Add admin user
 ```bash
@@ -43,7 +43,10 @@ python manage.py createsuperuser
 ```
 Enter username, email, passwork for user.
 
-
+### Run development server
+```bash
+python manage.py runserver
+```
 
 
 
