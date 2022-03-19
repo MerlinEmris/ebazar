@@ -64,7 +64,7 @@ class ItemAdmin(admin.ModelAdmin):
             'classes': ['collapse', 'wide']
         }]
     ]
-    readonly_fields = ['timestamp', 'updated', 'user']
+    readonly_fields = ['timestamp', 'updated']
     save_on_top = True
     # adds inline foreign object
     inlines = [
