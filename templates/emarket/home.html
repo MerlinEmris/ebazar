@@ -89,7 +89,7 @@
                                     {% for pic in pics %}
                                         {% if pic.item == item %}
                                             <div class="gallery-cell">
-                                                <img class="card-img-top" src="{{ MEDIA_URL }}{{ pic.img }}" alt="">
+                                                <img class="card-img-top" src="{{ MEDIA_URL }}{{ pic.img }}" height="320px" alt="">
                                             </div>
                                         {% endif %}
                                     {% endfor %}
@@ -99,7 +99,7 @@
                                     <a href="{% url 'show_item' item.id %}">{{ item.name }}</a>
                                 </h4>
                                 <h5 class="text-danger">{{ item.price }} <strong class="text-dark">TMT</strong></h5>
-                            <p class="card-text">{{ item.description|truncatechars:60 }}</p>
+                            <p class="card-text">{{ item.description|truncatechars:32 }}</p>
                             </div>
                             <div class="card-footer">
                                 <small class="text-muted">Tel:{{ item.user_phone }}</small>
