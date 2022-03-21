@@ -48,7 +48,9 @@ Enter username, email, passwork for user.
 python manage.py runserver
 ```
 
+## Features
 
+### Admin page
 
 
 ## License
