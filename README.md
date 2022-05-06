@@ -49,6 +49,7 @@ python manage.py runserver
 ```
 
 ## Features
+adding a post
 
 ### Admin page
 
