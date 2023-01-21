@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'emarket',
     'rest_framework',
     'corsheaders',
+    'django_cleanup.apps.CleanupConfig',
 ]
 
 MIDDLEWARE = [

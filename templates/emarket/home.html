@@ -8,7 +8,7 @@
 {% block body %}
 
 
-    <div class="container my-bg-lightcolor text-white my-padding-s1 my-box-shadow rounded">
+    <div class="container my-bg-lightcolor text-white my-padding-s1  rounded">
 
     <div class="row">
     <!-- invisible in small devices -->
@@ -27,7 +27,7 @@
 
         <div class="col-lg-9">
         <!-------------------------------img carusel---------------------------------->
-         <div id="myCarousel" class="carousel slide m-3 my-box-shadow rounded" data-ride="carousel">
+         <div id="myCarousel" class="carousel slide  rounded mb-2" data-ride="carousel">
           <ol class="carousel-indicators">
             <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
             <li data-target="#myCarousel" data-slide-to="1"></li>
@@ -80,16 +80,16 @@
         </div>
         <!--=============================end carusel================================-->
         <!------------------------------selling item list ---------------------------->
-        <div class="row">
+        <div class="row mb-4">
         {% if items %}
             {% for item in items %}
-                    <div class="col-lg-4 col-md-6 mb-4 text-dark">
+                    <div class="col-lg-4 col-md-6 mb-2 text-dark">
                         <div class="card h-100">
                                 <div id="owl-list-flickity" class="main-gallery flickity-viewport">
                                     {% for pic in pics %}
                                         {% if pic.item == item %}
                                             <div class="gallery-cell">
-                                                <img class="card-img-top" src="{{ MEDIA_URL }}{{ pic.img }}" height="320px" alt="">
+                                                <img class="card-img-top" src="{{ MEDIA_URL }}{{ pic.img }}" width="100%" alt="">
                                             </div>
                                         {% endif %}
                                     {% endfor %}

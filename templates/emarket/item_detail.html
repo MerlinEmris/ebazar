@@ -9,7 +9,7 @@
 {% block body %}
 
 
-    <div class="container my-box-shadow my-bg-lightcolor text-dark">
+    <div class="container my-box-shadow my-bg-lightcolor text-dark" >
 
       <div class="row">
 
@@ -37,7 +37,7 @@
         <div class="col-lg-9">
 
           <div class="card mt-4">
-<!------------------------------------ img flickity------------------------------------->
+{% comment %} <!------------------------------------ img flickity-------------------------------------> {% endcomment %}
             <div id="owl-list-flickity" class="main-gallery flickity-viewport">
                                     {% for pic in pics %}
                                         {% if pic.item == item %}
@@ -47,7 +47,7 @@
                                         {% endif %}
                                     {% endfor %}
             </div>
-<!--==================================end img flickity================================-->
+{% comment %} <!--==================================end img flickity================================--> {% endcomment %}
             <div class="card-body">
                 <div class="container">
                         <a class="" href="{% url 'user' item.user.id %}">
